@@ -1,20 +1,31 @@
 import * as React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
-const logo = require('./logo.svg');
+import Home from './containers/home';
+import Profile from './containers/profile';
+
+import './App.css';
+const homeSvg = require('./assets/home.svg');
+const profileSvg = require('./assets/profile.svg');
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div>
+          <Route exact={true} path="/home" component={Home} />
+          <Route path="/profile" component={Profile} />
+          <hr />
+          <div className="navContainer">
+            <NavLink className="navLink" to="/home">
+              <img src={homeSvg} alt="home" />
+            </NavLink>
+            <NavLink className="navLink" to="/profile">
+              <img src={profileSvg} alt="profile" />
+            </NavLink>
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      </Router>
     );
   }
 }
