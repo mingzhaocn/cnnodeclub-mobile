@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@types/fastclick@^1.0.28":
+  version "1.0.28"
+  resolved "http://registry.npm.taobao.org/@types/fastclick/download/@types/fastclick-1.0.28.tgz#db4b3f6f079235324b264338e229f9cdd98a6c4e"
+
 "@types/history@*":
   version "4.6.0"
   resolved "http://registry.npm.taobao.org/@types/history/download/@types/history-4.6.0.tgz#093d67ed780d889c9543f6dca24ebee0b6b9fc45"
@@ -10,9 +14,17 @@
   version "20.0.6"
   resolved "http://registry.npm.taobao.org/@types/jest/download/@types/jest-20.0.6.tgz#7e0ba76ddfacb42ee9bb0d8833e5208cf0680431"
 
+"@types/lodash@^4.14.73":
+  version "4.14.73"
+  resolved "http://registry.npm.taobao.org/@types/lodash/download/@types/lodash-4.14.73.tgz#9837e47db8643ba5bcef2c7921f37d90f9c24213"
+
 "@types/node@*", "@types/node@^8.0.20":
   version "8.0.20"
   resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.0.20.tgz#65c7375255c24b184c215a5d0b63247c32f01c91"
+
+"@types/qs@^6.5.0":
+  version "6.5.0"
+  resolved "http://registry.npm.taobao.org/@types/qs/download/@types/qs-6.5.0.tgz#14514e8ee24a4d0672c0c0da5e01a4f11da60d71"
 
 "@types/react-dom@^15.5.2":
   version "15.5.2"
@@ -20,6 +32,13 @@
   dependencies:
     "@types/node" "*"
     "@types/react" "*"
+
+"@types/react-redux@^5.0.4":
+  version "5.0.4"
+  resolved "http://registry.npm.taobao.org/@types/react-redux/download/@types/react-redux-5.0.4.tgz#7b52b6b6bd5be77e8b7ed58a9e6ff00a9a933138"
+  dependencies:
+    "@types/react" "*"
+    redux "^3.6.0"
 
 "@types/react-router-dom@^4.0.7":
   version "4.0.7"
@@ -4348,7 +4367,15 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux@^3.7.2:
+redux-devtools-extension@^2.13.2:
+  version "2.13.2"
+  resolved "http://registry.npm.taobao.org/redux-devtools-extension/download/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
+
+redux-thunk@^2.2.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
+
+redux@^3.6.0, redux@^3.7.2:
   version "3.7.2"
   resolved "http://registry.npm.taobao.org/redux/download/redux-3.7.2.tgz#06b73123215901d25d065be342eb026bc1c8537b"
   dependencies:

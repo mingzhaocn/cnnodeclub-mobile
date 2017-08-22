@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/fastclick": "^1.0.28",
     "@types/jest": "^20.0.6",
+    "@types/lodash": "^4.14.73",
     "@types/node": "^8.0.20",
+    "@types/qs": "^6.5.0",
     "@types/react": "^16.0.2",
     "@types/react-dom": "^15.5.2",
+    "@types/react-redux": "^5.0.4",
     "@types/react-router-dom": "^4.0.7",
     "app-root-path": "^2.0.1",
     "autoprefixer": "7.1.1",
@@ -33,6 +37,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.2",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "source-map-loader": "^0.2.1",
     "style-loader": "0.18.2",
     "sw-precache-webpack-plugin": "0.11.3",
@@ -102,5 +107,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.2"
   }
 }

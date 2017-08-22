@@ -1,8 +1,12 @@
 .navContainer{
+  height: 1rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
   display: flex;
   justify-content:space-around;
   align-items: center;
-  height: 1rem;
+  border-top: 0.01rem solid gainsboro
 }
 .navLink{
   display: flex;

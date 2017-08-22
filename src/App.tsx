@@ -12,10 +12,9 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <Route exact={true} path="/home" component={Home} />
           <Route path="/profile" component={Profile} />
-          <hr />
           <div className="navContainer">
             <NavLink className="navLink" to="/home">
               <img src={homeSvg} alt="home" />

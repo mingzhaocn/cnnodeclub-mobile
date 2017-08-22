@@ -1,3 +1,1 @@
-export   
-{ reducer as topicsReducer } 
-from './topics';
+export { reducer as topicsReducer } from './topics';
