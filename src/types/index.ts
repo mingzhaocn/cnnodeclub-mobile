@@ -9,3 +9,7 @@ export interface TopicsState {
   topics: Topics,
 }
 
+export interface StoreState {
+  topics: TopicsState
+}
+
