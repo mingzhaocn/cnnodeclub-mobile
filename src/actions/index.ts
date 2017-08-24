@@ -33,7 +33,7 @@ export const fetchTopics = (topicsParam: TopicsParam) => (dispatch: Dispatch<Top
   dispatch(requestTopics());
   return api.fetchTopics(topicsParam)
     .then(data => dispatch(receiveTopics(data.data, topicsParam)));
-  //TODO catch
+  // TODO catch
 };
 
 export const fetchTopicsIfNeeded =

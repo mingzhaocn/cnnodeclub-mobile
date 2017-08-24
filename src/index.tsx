@@ -5,6 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import store from './Store';
 import 'normalize.css';
+import './index.css'
 const FastClick = require('fastclick');
 FastClick.attach(document.body);
 ReactDOM.render(
