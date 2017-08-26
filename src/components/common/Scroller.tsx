@@ -1,9 +1,9 @@
 import * as React from 'react';
-// import { findDOMNode } from 'react-dom'
+import { findDOMNode } from 'react-dom'
 
 interface Props {
-  topIndicator: {};
-  onScrollToTop: Function;
+  bottomIndicator: {};
+  onScrollToBottom: any;
 }
 export default class Scroller extends React.Component<Props, any> {
   ScrollerDiv: any;
@@ -13,19 +13,33 @@ export default class Scroller extends React.Component<Props, any> {
     this.state = {
       indicatorAlive: true,
     }
+    if (!this.props.children
+      || (Array.isArray(this.props.children) && this.props.children.length === 0)
+    ) {
+      this.props.onScrollToBottom();
+    }
   }
+
   componentDidMount() {
-    this.childrenSlot.onscroll = () => {
+    const childrenSlotDiv = findDOMNode(this.childrenSlot) as HTMLDivElement;
+    childrenSlotDiv.onscroll = (e: Event) => {
       // TODO 去抖
-      const scrollTop = this.childrenSlot.scrollTop;
-      const clientHeight = this.childrenSlot.clientHeight;
-      const scrollHeight = this.childrenSlot.scrollHeight;
+      const scrollTop = childrenSlotDiv.scrollTop;
+      const clientHeight = childrenSlotDiv.clientHeight;
+      const scrollHeight = childrenSlotDiv.scrollHeight;
+      // window.console.log({
+      //   scrollTop, clientHeight, scrollHeight
+      // })
       if (scrollTop === 0) {
         window.console.log('scrollTop')
         return;
       }
       if (scrollHeight - clientHeight === scrollTop) {
-        window.console.log('scrollBottom')
+        window.console.log('scrollBottom');
+        this.props.onScrollToBottom()
+          .catch((err: any) => {
+            window.console.error('scrollBottom ' + err)
+          })
       }
     }
   }
@@ -44,7 +58,7 @@ export default class Scroller extends React.Component<Props, any> {
             textAlign: 'center'
           }}
         >
-          {this.state.indicatorAlive ? this.props.topIndicator : null}
+          {/* TODO Top Indicator */}
         </div>
         <div
           style={{
@@ -55,6 +69,7 @@ export default class Scroller extends React.Component<Props, any> {
           ref={(childrenSlot) => { this.childrenSlot = childrenSlot }}
         >
           {this.props.children}
+          {this.props.bottomIndicator}
         </div>
       </div>
     )

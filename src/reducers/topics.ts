@@ -23,7 +23,7 @@ export const reducer = (state: TopicsState = initialState, action: TopicsAction)
       return {
         ...state,
         onRequestTopics: action.onRequestTopics,
-        topics: action.topics,
+        topics: state.topics.concat(action.topics),
         topicsParam: action.topicsParam
       };
     default:

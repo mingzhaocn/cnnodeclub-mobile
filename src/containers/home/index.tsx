@@ -3,13 +3,12 @@ import * as React from 'react';
 import { connect, Dispatch } from 'react-redux';
 import * as actions from '../../actions';
 import { Topics, TopicsParam, OnRequestTopics, StoreState } from '../../types';
-// import TopicItem from '../../components/TopicItem';
-// const InfiniteScroll = require('react-infinite-scroller');
+import TopicItem from '../../components/TopicItem';
 import Scroller from '../../components/common/Scroller'
-const topIndicatorSvg = require('../../assets/load_green.svg')
+const bottomIndicatorSvg = require('../../assets/load_gray.svg')
 
 interface Props {
-  fetchTopicsIfNeeded: (topicsParam: TopicsParam) => {};
+  fetchTopicsIfNeeded: (topicsParam: TopicsParam) => any;
   lastTopicParam: TopicsParam;
   onRequestTopics: OnRequestTopics;
   topics: Topics;
@@ -17,7 +16,12 @@ interface Props {
 class Home extends React.Component<Props, {}> {
 
   loadMore = () => {
-    this.props.fetchTopicsIfNeeded(this.props.lastTopicParam);
+    return this.props.fetchTopicsIfNeeded(
+      {
+        ...this.props.lastTopicParam,
+        page: this.props.lastTopicParam.page + 1
+      }
+    )
   }
   render() {
     return (
@@ -27,46 +31,29 @@ class Home extends React.Component<Props, {}> {
         }}
       >
         <Scroller
-          onScrollToTop={this.loadMore}
-          topIndicator={(<img style={{ width: '0.44rem', height: '0.44rem' }} src={topIndicatorSvg} alt="loading..." />)}
+          onScrollToBottom={this.loadMore}
+          bottomIndicator={(
+            <div
+              style={{
+                textAlign: 'center'
+              }}
+            >
+              <img
+                style={{
+                  width: '0.44rem', height: '0.44rem'
+                }}
+                src={bottomIndicatorSvg}
+                alt="loading..."
+              />
+            </div>
+          )}
         >
-          <div>Scroller Item Top</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item</div>
-          <div>Scroller Item Bottom</div>
+          {
+            this.props.topics.map((item: any) => (
+              <TopicItem topic={item} key={item.id} />
+            ))
+          }
         </Scroller>
-        {/* <InfiniteScroll
-          pageStart={0}
-          loadMore={this.loadMore}
-          hasMore={true || false}
-          loader={<div style={{ fontSize: '0.44rem', textAlign: 'center' }}>Loading ...</div>}
-        >
-          <div>
-            {
-              this.props.topics.map((item: any) => (
-                <TopicItem topic={item} key={item.id} />
-              ))
-            }
-          </div>
-        </InfiniteScroll> */}
       </div>
     );
   }
